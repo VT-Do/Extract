@@ -8,7 +8,7 @@ import json
 import pandas as pd
 
 st.set_page_config(layout="wide")
-
+container=st.container()
 
 col4, col5,col6 = container.columns((2, 6, 1))
 
