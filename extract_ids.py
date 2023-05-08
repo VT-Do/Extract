@@ -7,10 +7,28 @@ from bs4 import BeautifulSoup
 import json
 import pandas as pd
 
+
 st.set_page_config(layout="wide")
 container=st.container()
 st.sidebar.write('Hello')
 
+#download
+def download(output):
+    if output_data.shape[0]>0:    
+        csv = output.to_csv(index=False).encode('utf-8')
+        st.download_button(
+    		label="Download ouput as CSV",
+    		data=csv,
+    		file_name='data.csv',
+    		mime='text/csv',
+		)
+	
+        st.dataframe(output_data.reset_index(drop=True),2000,1000)
+
+    else:
+        st.write('')
+        st.write('No output found')
+      
 choice1 = st.sidebar.radio("Select the select",('PlayStore','AppStore'), horizontal=True)
 choice2 = st.sidebar.radio("Insert input",('Upload','Type/Paste'), horizontal=True)
 
@@ -53,5 +71,5 @@ for bundle_id in list_bundleid:
             app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})
    
 df = pd.DataFrame(app_data)
-    
+download(df)
 st.dataframe(df,1700,1200)
