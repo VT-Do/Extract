@@ -14,7 +14,7 @@ st.sidebar.write('Hello')
 
 #download
 def download(output):
-    if output_data.shape[0]>0:    
+    if output.shape[0]>0:    
         csv = output.to_csv(index=False).encode('utf-8')
         st.download_button(
     		label="Download ouput as CSV",
