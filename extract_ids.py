@@ -50,4 +50,4 @@ for bundle_id in list_bundleid:
    
 df = pd.DataFrame(app_data)
     
-st.dataframe(df,2100,1500)
+st.dataframe(df,1700,1200)
