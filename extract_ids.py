@@ -21,9 +21,8 @@ def download(output):
     		data=csv,
     		file_name='data.csv',
     		mime='text/csv',
-		)
-	
-        st.dataframe(output_data.reset_index(drop=True),2000,1000)
+		)	
+        st.dataframe(output.reset_index(drop=True),2000,1000)
 
     else:
         st.write('')
