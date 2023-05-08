@@ -11,7 +11,7 @@ st.set_page_config(layout="wide")
 container=st.container()
 st.sidebar.write('Hello')
 
-choice1 = st.sidebar.radio("Select invironment",('PlayStore','AppStore'), horizontal=True)
+choice1 = st.sidebar.radio("Select the select",('PlayStore','AppStore'), horizontal=True)
 choice2 = st.sidebar.radio("Insert input",('Upload','Type/Paste'), horizontal=True)
 
 col4, col5,col6 = container.columns((2, 6, 1))
