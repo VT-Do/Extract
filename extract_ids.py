@@ -9,6 +9,7 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 container=st.container()
+st.sidebar.write('Hello')
 
 choice1 = st.sidebar.radio("Select invironment",('PlayStore','AppStore'), horizontal=True)
 choice2 = st.sidebar.radio("Insert input",('Upload','Type/Paste'), horizontal=True)
@@ -23,7 +24,7 @@ with col5:
 with col6:
    st.write('')
     
-st.sidebar.write('Hello')
+
 
 
 
