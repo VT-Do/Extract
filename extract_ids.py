@@ -16,7 +16,7 @@ with col4:
    st.image("images.png", width=80)
 
 with col5:
-   st.title("Extract Bundle IDs") 
+   st.title("Extracted Bundle IDs") 
 with col6:
    st.write('')
     
