@@ -71,4 +71,4 @@ for bundle_id in list_bundleid:
    
 df = pd.DataFrame(app_data)
 download(df)
-st.dataframe(df,1700,1200)
+
