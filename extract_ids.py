@@ -28,7 +28,7 @@ def download(output):
         st.write('')
         st.write('No output found')
       
-choice1 = st.sidebar.radio("Select the select",('PlayStore','AppStore'), horizontal=True)
+choice1 = st.sidebar.radio("Select the store",('PlayStore','AppStore'), horizontal=True)
 choice2 = st.sidebar.radio("Insert input",('Upload','Type/Paste'), horizontal=True)
 
 col4, col5,col6 = container.columns((3, 6, 1))
