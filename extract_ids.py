@@ -43,9 +43,9 @@ def get_data(input):
 	
 
 #download
-def download(output_data):
-    if output_data.shape[0]>0:    
-        csv = output_data.to_csv(index=False).encode('utf-8')
+def download(output):
+    if output.shape[0]>0:    
+        csv = output.to_csv(index=False).encode('utf-8')
         st.download_button(
     		label="Download ouput as CSV",
     		data=csv,
@@ -53,8 +53,11 @@ def download(output_data):
     		mime='text/csv',
 		)
 	
-        st.dataframe(output_data.reset_index(drop=True),2000,1000)
-
+        # Define the CSS styles for the header row
+        header_style = [dict(selector="th", props=[("text-align", "center")])]
+        # Apply the CSS styles to the header row of the dataframe
+        styled_output = output.style.set_table_styles(header_style)
+        st.write(styled_output)
     else:
         st.write('')
         st.write('No output found')
