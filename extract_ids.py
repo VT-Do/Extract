@@ -37,9 +37,9 @@ list_bundleid = st.sidebar.text_area('Put lines here', 'Ex: [1,2]')
 
         
 
-if (choice=="PlayStore")
+if (choice=="PlayStore"):
     st.sidebar.write('Hello PlayStore')
-elif (choice=="AppStore") 
+elif (choice=="AppStore"):
     st.sidebar.write('Hello AppStore')
 				 
        
