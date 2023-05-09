@@ -79,7 +79,7 @@ if (choice=="PlayStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleIDs list here', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
     get_data(list_bundleid)
 elif (choice=="AppStore"):
-    list_bundleid = st.sidebar.text_area('Put bundleid list here', '[1,2]')
+    list_bundleid = st.sidebar.text_area('Put bundleid list here', 'Example: [1,2]')
     get_data(list_bundleid)
         
        
