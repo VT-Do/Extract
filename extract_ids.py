@@ -6,6 +6,7 @@ import re
 from bs4 import BeautifulSoup
 import json
 import pandas as pd
+import ast
 
 
 st.set_page_config(layout="wide")
