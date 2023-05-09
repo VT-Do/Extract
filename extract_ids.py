@@ -67,7 +67,7 @@ elif (choice=="AppStore"):
 
 
 
-   
-df = pd.DataFrame(app_data)
-download(df)
+if app_data 1= []:
+    df = pd.DataFrame(app_data)
+    download(df)
 
