@@ -52,7 +52,7 @@ app_data = []
 
 if (choice=="PlayStore"):
     st.sidebar.write('Hello PlayStore')	
-    list_bundleid = st.sidebar.text_area('Put lines here', "['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
+    list_bundleid = st.sidebar.text_area('Put lines here', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
     try:
         list_bundleid=ast.literal_eval(list_bundleid)
     except:
