@@ -38,6 +38,7 @@ with col4:
 
 with col5:
    st.title("Extracted Bundle IDs") 
+   st.markdown("""<hr style="height:10px;border:none;color:#333;background-color:#333;" /> """, unsafe_allow_html=True)
 with col6:
    st.write('')
     
