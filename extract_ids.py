@@ -12,7 +12,32 @@ import ast
 st.set_page_config(layout="wide")
 #st.sidebar.write('Hello')
 
-
+def get_data(input):
+    try:
+        list_bundleid=ast.literal_eval(input)
+    except:
+        st.write('Please check the input')
+    if (list_bundleid!="['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
+        for bundle_id in list_bundleid:
+            try:
+                url = "https://play.google.com/store/apps/details?id=" + bundle_id
+                response = requests.get(url)
+                soup = BeautifulSoup(response.text, "html.parser")
+                title_element = soup.find("h1",class_=re.compile("Fd93Bb"))
+                app_title = title_element.text.strip()
+                app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+            except:
+                try:
+                    url = "https://apptopia.com/google-play/app/" + bundle_id + "/about"
+                    response = requests.get(url)
+                    soup = BeautifulSoup(response.text, "html.parser")
+                    json_element = soup.find("script", type="application/ld+json")
+                    json_data = json.loads(json_element.string)
+                    app_title = json_data['name']
+                    app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+                except:
+                    app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
+    return app_data
 	
 
 #download
@@ -53,30 +78,7 @@ app_data = []
 if (choice=="PlayStore"):
     st.sidebar.write('Hello PlayStore')	
     list_bundleid = st.sidebar.text_area('Put lines here', "['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
-    try:
-        list_bundleid=ast.literal_eval(list_bundleid)
-    except:
-        st.write('Please check the input')
-    if (list_bundleid!="['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
-        for bundle_id in list_bundleid:
-            try:
-                url = "https://play.google.com/store/apps/details?id=" + bundle_id
-                response = requests.get(url)
-                soup = BeautifulSoup(response.text, "html.parser")
-                title_element = soup.find("h1",class_=re.compile("Fd93Bb"))
-                app_title = title_element.text.strip()
-                app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
-            except:
-                try:
-                    url = "https://apptopia.com/google-play/app/" + bundle_id + "/about"
-                    response = requests.get(url)
-                    soup = BeautifulSoup(response.text, "html.parser")
-                    json_element = soup.find("script", type="application/ld+json")
-                    json_data = json.loads(json_element.string)
-                    app_title = json_data['name']
-                    app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
-                except:
-                    app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
+    get_data(list_bundleid)
 elif (choice=="AppStore"):
     st.sidebar.write('Hello AppStore')
     list_bundleid = st.sidebar.text_area('Put bundleid list here', '[1,2]')
