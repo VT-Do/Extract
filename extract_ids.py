@@ -13,11 +13,12 @@ st.set_page_config(layout="wide")
 #st.sidebar.write('Hello')
 
 def get_data(input):
-    try:
-        list_bundleid=ast.literal_eval(input)
-    except:
-        st.write('Please check the input')
+
     if (list_bundleid!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
+	try:
+            list_bundleid=ast.literal_eval(input)
+        except:
+            st.write('Please check the input')
         for bundle_id in list_bundleid:
             try:
                 url = "https://play.google.com/store/apps/details?id=" + bundle_id
