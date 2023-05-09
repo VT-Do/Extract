@@ -30,7 +30,7 @@ def download(output):
         st.write('')
         st.write('No output found')
    
-col1, col2, col3 = st.columns((4, 7, 1))
+col1, col2, col3 = st.columns((4, 7, 3))
 with col1:
     st.write('')
 with col2:
