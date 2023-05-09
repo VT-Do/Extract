@@ -52,7 +52,7 @@ def download(output):
     		file_name='data.csv',
     		mime='text/csv',
 		)	
-        st.dataframe(output.reset_index(drop=True),2000,1000)
+        st.write(output.style.set_properties(**{'text-align': 'center'}))
 
     else:
         st.write('')
