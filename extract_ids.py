@@ -9,7 +9,6 @@ import pandas as pd
 
 
 st.set_page_config(layout="wide")
-container=st.container()
 #st.sidebar.write('Hello')
 
 #download
@@ -28,26 +27,26 @@ def download(output):
         st.write('')
         st.write('No output found')
       
-choice1 = st.sidebar.radio("Select the store",('PlayStore','AppStore'), horizontal=True)
-choice2 = st.sidebar.radio("Insert input",('Upload','Type/Paste'), horizontal=True)
+choice = st.sidebar.radio("Select the store",('PlayStore','AppStore'), horizontal=True)
 
-col4, col5,col6 = container.columns((3, 6, 1))
-
-with col4:
-   st.image("images.png", width=80)
-
-with col5:
-   st.title("Extracted Bundle IDs") 
-with col6:
-   st.write('')
+st.image("images.png", width=80)
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
     
+list_bundleid = st.sidebar.text_area('Put lines here', 'Ex: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong'])     
 
 
+        
+
+if (choice=="PlayStore")
+    st.sidebar.write('Hello PlayStore')
+elif (choice=="AppStore") 
+    st.sidebar.write('Hello AppStore')
+				 
+       
+	
 
 
-
-list_bundleid = ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']
+ = ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']
 app_data = []
 
 for bundle_id in list_bundleid:
