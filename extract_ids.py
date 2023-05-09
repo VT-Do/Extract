@@ -29,7 +29,7 @@ def download(output):
       
 choice = st.sidebar.radio("Select the store",('PlayStore','AppStore'), horizontal=True)
 
-col4, col5,col6 = st.columns((4, 7, 1))
+col4, col5, col6 = st.columns((4, 7, 1))
     with col4:
         st.write('')
     with col5:
