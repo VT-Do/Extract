@@ -32,7 +32,7 @@ choice = st.sidebar.radio("Select the store",('PlayStore','AppStore'), horizonta
 st.image("images.png", width=80)
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
     
-list_bundleid = st.sidebar.text_area('Put lines here', 'Ex: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']')     
+list_bundleid = st.sidebar.text_area('Put lines here', 'Ex: [1,2]')     
 
 
         
