@@ -31,7 +31,7 @@ def download(output):
 choice1 = st.sidebar.radio("Select the select",('PlayStore','AppStore'), horizontal=True)
 choice2 = st.sidebar.radio("Insert input",('Upload','Type/Paste'), horizontal=True)
 
-col4, col5,col6 = container.columns((2, 6, 1))
+col4, col5,col6 = container.columns((3, 6, 1))
 
 with col4:
    st.image("images.png", width=80)
