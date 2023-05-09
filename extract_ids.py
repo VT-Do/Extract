@@ -10,7 +10,7 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 container=st.container()
-st.sidebar.write('Hello')
+#st.sidebar.write('Hello')
 
 #download
 def download(output):
