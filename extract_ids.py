@@ -37,8 +37,28 @@ list_bundleid = st.sidebar.text_area('Put lines here', 'Ex: [1,2]')
 
         
 
-if (choice=="PlayStore"):
-    st.sidebar.write('Hello PlayStore')
+if (choice=="PlayStore") and (list_bundleid!='Ex: [1,2]'):
+    st.sidebar.write('Hello PlayStore')	
+    app_data = []
+    for bundle_id in list_bundleid:
+        try:
+            url = "https://play.google.com/store/apps/details?id=" + bundle_id
+            response = requests.get(url)
+            soup = BeautifulSoup(response.text, "html.parser")
+            title_element = soup.find("h1",class_=re.compile("Fd93Bb"))
+            app_title = title_element.text.strip()
+            app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+        except:
+            try:
+                url = "https://apptopia.com/google-play/app/" + bundle_id + "/about"
+                response = requests.get(url)
+                soup = BeautifulSoup(response.text, "html.parser")
+                json_element = soup.find("script", type="application/ld+json")
+                json_data = json.loads(json_element.string)
+                app_title = json_data['name']
+                app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+            except:
+                app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
 elif (choice=="AppStore"):
     st.sidebar.write('Hello AppStore')
 				 
@@ -46,26 +66,7 @@ elif (choice=="AppStore"):
 	
 
 
-app_data = []
-for bundle_id in list_bundleid:
-    try:
-        url = "https://play.google.com/store/apps/details?id=" + bundle_id
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, "html.parser")
-        title_element = soup.find("h1",class_=re.compile("Fd93Bb"))
-        app_title = title_element.text.strip()
-        app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
-    except:
-        try:
-            url = "https://apptopia.com/google-play/app/" + bundle_id + "/about"
-            response = requests.get(url)
-            soup = BeautifulSoup(response.text, "html.parser")
-            json_element = soup.find("script", type="application/ld+json")
-            json_data = json.loads(json_element.string)
-            app_title = json_data['name']
-            app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
-        except:
-            app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})
+
    
 df = pd.DataFrame(app_data)
 download(df)
