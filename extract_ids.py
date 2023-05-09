@@ -13,9 +13,8 @@ st.set_page_config(layout="wide")
 #st.sidebar.write('Hello')
 
 def get_data(input):
-
     if (list_bundleid!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
-	try:
+        try:
             list_bundleid=ast.literal_eval(input)
         except:
             st.write('Please check the input')
