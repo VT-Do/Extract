@@ -11,6 +11,9 @@ import pandas as pd
 st.set_page_config(layout="wide")
 #st.sidebar.write('Hello')
 
+
+	
+
 #download
 def download(output):
     if output.shape[0]>0:    
@@ -26,12 +29,17 @@ def download(output):
     else:
         st.write('')
         st.write('No output found')
-      
-choice = st.sidebar.radio("Select the store",('PlayStore','AppStore'), horizontal=True)
-
-
+   
+col1, col2, col3 = st.columns((4, 7, 1))
+with col1:
+    st.write('')
+with col2:
+    st.title("Extracted Bundle IDs") 
+with col3:
+    st.write('')
 
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
+choice = st.sidebar.radio("Select the store",('PlayStore','AppStore'), horizontal=True)
     
 list_bundleid = st.sidebar.text_area('Put lines here', 'Ex: [1,2]')     
 app_data = []
