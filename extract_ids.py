@@ -55,13 +55,11 @@ def download(output):
 	
         # Define the CSS styles for the header row
         header_style = '''
-    text-align: center;
-    font-weight: bold;
-'''
+            text-align: center;
+            font-weight: bold;
+            '''
         # Apply the CSS styles to the header row of the dataframe
-        styled_df = df.style.set_properties(**{'text-align': 'center'}).set_table_styles([
-    {'selector': 'th', 'props': [('text-align', 'center'), ('font-weight', 'bold')]}
-])
+        styled_df = df.style.set_properties(**{'text-align': 'center'}).set_table_styles([{'selector': 'th', 'props': [('text-align', 'center'), ('font-weight', 'bold')]}])
         st.write(styled_output)
     else:
         st.write('')
