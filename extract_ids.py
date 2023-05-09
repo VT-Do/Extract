@@ -37,6 +37,8 @@ def get_data(input):
                     app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
                 except:
                     app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
+    else:
+	st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
     return app_data
 	
 
