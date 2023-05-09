@@ -11,8 +11,7 @@ import ast
 
 st.set_page_config(layout="wide")
 #st.sidebar.write('Hello')
-
-def get_data(input)
+def get_data(input):
     if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
         try:
             list_bundleid=ast.literal_eval(input)
