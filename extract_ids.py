@@ -44,10 +44,7 @@ choice = st.sidebar.radio("Select the store",('PlayStore','AppStore'), horizonta
     
 
 
-try:
-    list_bundleid=ast.literal_eval(list_bundleid)
-except:
-    st.write('Please check the input')
+
 
 app_data = []
 
@@ -56,6 +53,10 @@ app_data = []
 if (choice=="PlayStore"):
     st.sidebar.write('Hello PlayStore')	
     list_bundleid = st.sidebar.text_area('Put lines here', "['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
+    try:
+        list_bundleid=ast.literal_eval(list_bundleid)
+    except:
+        st.write('Please check the input')
     if (list_bundleid!="['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
         for bundle_id in list_bundleid:
             try:
