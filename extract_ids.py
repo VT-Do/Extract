@@ -43,16 +43,18 @@ def get_data(input):
 	
 
 #download
-def download(output):
-    if output.shape[0]>0:    
-        csv = output.to_csv(index=False).encode('utf-8')
+def download(output_data):
+    if output_data.shape[0]>0:    
+        csv = output_data.to_csv(index=False).encode('utf-8')
         st.download_button(
-    		label="Download as CSV ⬇️",
+    		label="Download ouput as CSV",
     		data=csv,
     		file_name='data.csv',
     		mime='text/csv',
-		)	
-    st.dataframe(output.reset_index(drop=True),2000,1000)
+		)
+	
+        st.dataframe(output_data.reset_index(drop=True),2000,1000)
+
     else:
         st.write('')
         st.write('No output found')
