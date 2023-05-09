@@ -59,8 +59,8 @@ def download(output):
 '''
 
      # Apply the CSS styles to the header row of the dataframe
-    styled_df = df.style.set_properties(**{'text-align': 'center'}).set_table_styles([{'selector': 'th', 'props': [('text-align', 'center'), ('font-weight', 'bold')]}])
-    st.write(styled_df)
+    styled_output = output.style.set_properties(**{'text-align': 'center'}).set_table_styles([{'selector': 'th', 'props': [('text-align', 'center'), ('font-weight', 'bold')]}])
+    st.write(styled_output)
     else:
         st.write('')
         st.write('No output found')
