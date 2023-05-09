@@ -50,7 +50,7 @@ except:
     st.write('Please check the input')
 
 app_data = []
-st.write(type(list_bundleid))
+
         
 
 if (choice=="PlayStore") and (list_bundleid!='Ex: [1,2]'):
