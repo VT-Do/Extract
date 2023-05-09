@@ -29,7 +29,13 @@ def download(output):
       
 choice = st.sidebar.radio("Select the store",('PlayStore','AppStore'), horizontal=True)
 
-st.title("Extracted Bundle IDs") 
+col4, col5,col6 = st.columns((4, 7, 1))
+    with col4:
+    with col5:
+       st.title("Extracted Bundle IDs") 
+    with col6:
+
+
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
     
 list_bundleid = st.sidebar.text_area('Put lines here', 'Ex: [1,2]')     
