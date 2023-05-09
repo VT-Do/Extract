@@ -53,12 +53,10 @@ def download(output):
     		mime='text/csv',
 		)	
     # Define the CSS styles for the header row
-    header_style = '''
-    text-align: center;
-    font-weight: bold;
-    '''
+    header_style = [
+    dict(selector="th", props=[("text-align", "center")])]
     # Apply the CSS styles to the header row of the dataframe
-    styled_output = output.style.set_properties(**{'text-align': 'center'}).set_table_styles([{'selector': 'th', 'props': [('text-align', 'center'), ('font-weight', 'bold')]}])
+    styled_output = output.style.set_table_styles(header_style)
     st.write(styled_output)
     else:
         st.write('')
