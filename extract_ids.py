@@ -33,13 +33,13 @@ st.image("images.png", width=80)
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
     
 list_bundleid = st.sidebar.text_area('Put lines here', 'Ex: [1,2]')     
-
+app_data = []
 
         
 
 if (choice=="PlayStore") and (list_bundleid!='Ex: [1,2]'):
     st.sidebar.write('Hello PlayStore')	
-    app_data = []
+    
     for bundle_id in list_bundleid:
         try:
             url = "https://play.google.com/store/apps/details?id=" + bundle_id
@@ -65,6 +65,9 @@ elif (choice=="AppStore"):
        
 	
 
+if len(app_data) >0:
+    df = pd.DataFrame(app_data)
+    download(df)
 
 
 
