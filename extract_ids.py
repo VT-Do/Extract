@@ -77,7 +77,7 @@ app_data = []
 
 if (choice=="PlayStore"):
     st.sidebar.write('Hello PlayStore')	
-    list_bundleid = st.sidebar.text_area('Put lines here', "['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
+    list_bundleid = st.sidebar.text_area('Put lines here', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
     get_data(list_bundleid)
 elif (choice=="AppStore"):
     st.sidebar.write('Hello AppStore')
