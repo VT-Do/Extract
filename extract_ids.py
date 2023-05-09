@@ -47,7 +47,7 @@ def download(output):
     if output.shape[0]>0:    
         csv = output.to_csv(index=False).encode('utf-8')
         st.download_button(
-    		label="Download ouput as CSV",
+    		label="Download as CSV ⬇️",
     		data=csv,
     		file_name='data.csv',
     		mime='text/csv',
