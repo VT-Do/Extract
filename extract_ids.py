@@ -17,7 +17,7 @@ def get_data(input):
         list_bundleid=ast.literal_eval(input)
     except:
         st.write('Please check the input')
-    if (list_bundleid!="['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
+    if (list_bundleid!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
         for bundle_id in list_bundleid:
             try:
                 url = "https://play.google.com/store/apps/details?id=" + bundle_id
