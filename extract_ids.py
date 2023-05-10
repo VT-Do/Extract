@@ -24,7 +24,7 @@ def playstore_data(input):
                 st.write('Please check the input')
         for bundle_id in list_bundleid:
             try:
-                url = "https://play.google.com/store/apps/details?id=" + bundle_id
+                url = "https://play.google.com/store/apps/details?id=" + bundle_id.strip()
                 response = requests.get(url)
                 soup = BeautifulSoup(response.text, "html.parser")
                 title_element = soup.find("h1",class_=re.compile("Fd93Bb"))
@@ -32,7 +32,7 @@ def playstore_data(input):
                 app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
             except:
                 try:
-                    url = "https://apptopia.com/google-play/app/" + bundle_id + "/about"
+                    url = "https://apptopia.com/google-play/app/" + bundle_id.strip() + "/about"
                     response = requests.get(url)
                     soup = BeautifulSoup(response.text, "html.parser")
                     json_element = soup.find("script", type="application/ld+json")
@@ -58,7 +58,7 @@ def appstore_data(input):
                 st.write('Please check the input')
         for bundle_id in list_bundleid:
             try:
-                 url = "https://apps.apple.com/it/app/apple-store/id" + str(bundle_id)
+                 url = "https://apps.apple.com/it/app/apple-store/id" + str(bundle_id).strip()
                  response = requests.get(url)
                  soup = BeautifulSoup(response.text, "html.parser")
                  title_element = soup.find("h1",{"class": "product-header__title"})
@@ -66,7 +66,7 @@ def appstore_data(input):
                  app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
             except:
                 try:
-                    url = "https://apptopia.com/ios/app/" + str(bundle_id) + "/about"
+                    url = "https://apptopia.com/ios/app/" + str(bundle_id).strip() + "/about"
                     response = requests.get(url)
                     soup = BeautifulSoup(response.text, "html.parser")
                     json_element = soup.find("script", type="application/ld+json")
