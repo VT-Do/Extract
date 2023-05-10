@@ -43,7 +43,7 @@ def playstore_data(input):
     return app_data
 	
 def appstore_data(input):
-    if (input!="Example: ['1331794412']"):
+    if (input!="Example: ['1331794412','1331794412']"):
         try:
             list_bundleid=ast.literal_eval(input)
         except:
@@ -102,7 +102,7 @@ if (choice=="PlayStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
     playstore_data(list_bundleid)
 elif (choice=="AppStore"):
-    list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['1331794412']")
+    list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['1331794412','1331794412']")
     appstore_data(list_bundleid)
         
        
