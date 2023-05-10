@@ -113,7 +113,7 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-		output=output.to_excel("output.xlsx") 
+                output=output.to_excel("output.xlsx") 
                 with open("output.xlsx", "rb") as template_file:
                     template_byte = template_file.read()
                 st.download_button(label="Click to Download Template File",
