@@ -83,7 +83,7 @@ def download(output):
     		file_name='data.csv',
     		mime='text/csv',
 		)
-        st.dataframe(output.reset_index(drop=True),1000)
+        st.dataframe(output.reset_index(drop=True))
     else:
         st.write('')
         st.write('No output found')
