@@ -112,7 +112,7 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-                container.markdown(create_download_link(output, "df"), unsafe_allow_html=True)
+                container.markdown(create_download_link(output, "output"), unsafe_allow_html=True)
             st.write('')
     else:
         st.write('')
