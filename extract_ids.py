@@ -19,13 +19,10 @@ st.set_page_config(layout="wide")
 def playstore_data(input):
     if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
         try:
-            list_bundleid=ast.literal_eval(input.strip())
+            list=re.sub("[{}\]\['\"]", "", input.strip())
+            list_bundleid=list.split(sep=',')
         except:
-            try:
-                list=re.sub("[{}\]\['\"]", "", input.strip())
-                list_bundleid=list.split(sep=',')
-            except:
-                st.warning('Please check the input')
+            st.warning('Please check the input')
         for bundle_id in list_bundleid:
             try:
                 url = "https://play.google.com/store/apps/details?id=" + bundle_id.strip()
