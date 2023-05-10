@@ -83,13 +83,10 @@ def appstore_data(input):
 # download excel
 def download_excel(output):
     # Set up Excel writer using in-memory BytesIO object
-    writer = pd.ExcelWriter(output, engine='xlsxwriter')
-    df.to_excel(writer, sheet_name='Sheet1', index=False)
-
-    # Save workbook and return BytesIO object
-    writer.save()
-    excel_data = output.getvalue()
-    return excel_data
+    towrite = io.BytesIO()
+    downloaded_file = df.to_excel(towrite, encoding='utf-8', index=False, header=True) # write to BytesIO buffer
+    towrite.seek(0)  # reset pointer
+    return towrite
 	
 #download
 def download(output):
@@ -110,12 +107,8 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-                output2 = BytesIO()
-                writer = pd.ExcelWriter(output2, engine='xlsxwriter')
-                output.to_excel(writer, sheet_name='Sheet1', index=False)
-                writer.save()
-                output2.seek(0)
-                container.download_button(label="Download as "+ option+ " ⬇️", data=ouput2, 
+		excel = download_excel(output)
+                container.download_button(label="Download as "+ option+ " ⬇️", data=excel, 
 				   file_name='output.xlsx', mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
         with col3:
