@@ -41,30 +41,36 @@ def playstore_data(input):
     return app_data
 	
 
-def appstore_data(input):
-    if (input!="Example: ['1331794412']"):
-        for bundle_id in list_bundleid:
-    try:
-        url = "https://apps.apple.com/it/app/apple-store/id" + str(bundle_id)
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, "html.parser")
-        title_element = soup.find("h1",{"class": "product-header__title"})
-        app_title = title_element.text.strip().rstrip("\n").split("\n")[0].strip()
-        app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
-    except:
+def playstore_data(input):
+    if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
         try:
-            url = "https://apptopia.com/ios/app/" + str(bundle_id) + "/about"
-            response = requests.get(url)
-            soup = BeautifulSoup(response.text, "html.parser")
-            json_element = soup.find("script", type="application/ld+json")
-            json_data = json.loads(json_element.string)
-            app_title = json_data['name']
-            app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+            list_bundleid=ast.literal_eval(input)
         except:
-            app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})
+            st.write('Please check the input')
+        for bundle_id in list_bundleid:
+            try:
+                url = "https://play.google.com/store/apps/details?id=" + bundle_id
+                response = requests.get(url)
+                soup = BeautifulSoup(response.text, "html.parser")
+                title_element = soup.find("h1",class_=re.compile("Fd93Bb"))
+                app_title = title_element.text.strip()
+                app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+            except:
+                try:
+                    url = "https://apptopia.com/google-play/app/" + bundle_id + "/about"
+                    response = requests.get(url)
+                    soup = BeautifulSoup(response.text, "html.parser")
+                    json_element = soup.find("script", type="application/ld+json")
+                    json_data = json.loads(json_element.string)
+                    app_title = json_data['name']
+                    app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+                except:
+                    app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
     else:
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
     return app_data
+	
+
 	
 	
 #download
