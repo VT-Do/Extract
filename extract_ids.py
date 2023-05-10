@@ -85,7 +85,7 @@ def appstore_data(input):
 #download
 def download(output):
     if output.shape[0]>0:
-        col1, col2= st.columns((5,5))
+        col1, col2= st.columns((8,2))
         with col1:	
             pd.set_option('display.max_colwidth', None)
             st.dataframe(output.reset_index(drop=True))
