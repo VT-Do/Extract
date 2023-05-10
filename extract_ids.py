@@ -17,7 +17,11 @@ def playstore_data(input):
         try:
             list_bundleid=ast.literal_eval(input.strip())
         except:
-            st.write('Please check the input')
+            try:
+                list=re.sub("[{}\]\[']", "", input.strip())
+                list_bundleid=list.split(sep=',')
+            except:
+                st.write('Please check the input')
         for bundle_id in list_bundleid:
             try:
                 url = "https://play.google.com/store/apps/details?id=" + bundle_id
