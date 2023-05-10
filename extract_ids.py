@@ -84,15 +84,25 @@ def appstore_data(input):
 	
 #download
 def download(output):
-    if output.shape[0]>0:    
-        csv = output.to_csv(index=False).encode('utf-8')
+    if output.shape[0]>0:
+        col1, col2,col3= st.columns(2,2,7)
+        with col1:
+            csv = output.to_csv(index=False).encode('utf-8')
         st.download_button(
     		label="Download as CSV ⬇️",
     		data=csv,
     		file_name='data.csv',
     		mime='text/csv',
 		)
+        with col2:
+             option = st.selectbox("Type",("CSV", "XLSX"))
+        with col3:
+            st.write('')
+		
         pd.set_option('display.max_colwidth', None)
+	with col11:
+            option = st.selectbox("Please choose type of contact",("Report an error", "Ask questions", "Comment"))
+            text_input = st.text_input(label='Your name or email')
         st.dataframe(output.reset_index(drop=True))
     else:
         st.write('')
