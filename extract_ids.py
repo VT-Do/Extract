@@ -92,7 +92,7 @@ def download(output):
         with col2:
             csv = output.to_csv(index=False).encode('utf-8')
             st.download_button(
-    		label="Download as CSV ⬇️",
+    		label="Download as"+ option+ " ⬇️",
     		data=csv,
     		file_name='data.csv',
     		mime='text/csv',
