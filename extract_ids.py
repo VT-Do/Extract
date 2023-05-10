@@ -113,16 +113,13 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-                data = {'name': ['Alice', 'Bob', 'Charlie'],
-        'age': [25, 30, 35]}
-                output = pd.DataFrame(data)
-                excel = to_excel(output)
-                st.download_button(
-    label="Download Excel workbook",
-    data=excel,
-    file_name="workbook.xlsx",
-    mime="application/vnd.ms-excel"
-)
+		output=output.to_excel("output.xlsx") 
+                with open("output.xlsx", "rb") as template_file:
+                    template_byte = template_file.read()
+                st.download_button(label="Click to Download Template File",
+                        data=template_byte,
+                        file_name="template.xlsx",
+                        mime='application/octet-stream')
             st.write('')
     else:
         st.write('')
