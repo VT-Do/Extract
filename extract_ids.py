@@ -109,11 +109,7 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-                excel = download_excel(output)
-                container.download_button(label="Download as "+ option+ " ⬇️", data=excel, 
-				   file_name='output.xlsx', mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-
-        with col3:
+                container.markdown(create_download_link(output, "df"), unsafe_allow_html=True)
             st.write('')
     else:
         st.write('')
