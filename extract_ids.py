@@ -83,7 +83,7 @@ def appstore_data(input):
 # download excel
 def download_excel(output):
     # Set up Excel writer using in-memory BytesIO object
-    towrite = io.BytesIO()
+    towrite = BytesIO()
     downloaded_file = df.to_excel(towrite, encoding='utf-8', index=False, header=True) # write to BytesIO buffer
     towrite.seek(0)  # reset pointer
     return towrite
