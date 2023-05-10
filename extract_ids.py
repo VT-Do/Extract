@@ -116,7 +116,7 @@ def download(output):
                 output=output.to_excel("output.xlsx") 
                 with open("output.xlsx", "rb") as template_file:
                     template_byte = template_file.read()
-                st.download_button(label="Click to Download Template File",
+                container.download_button(label="Download as "+ option+ " ⬇️",
                         data=template_byte,
                         file_name="template.xlsx",
                         mime='application/octet-stream')
