@@ -18,7 +18,10 @@ def playstore_data(input):
     if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
         try:
             list=re.sub("[{}\]\['\"]", "", input.strip())
-            list_bundleid=list.split(sep=',')
+            if '\n' in list:
+                list_bundleid=list.split(sep='\n')
+            else:
+                list_bundleid=list.split(sep=',')
         except:
             st.warning('Please check the input')
         for bundle_id in list_bundleid:
