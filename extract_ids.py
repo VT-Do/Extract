@@ -22,7 +22,7 @@ def playstore_data(input):
                 list=re.sub("[{}\]\[']", "", input.strip())
                 list_bundleid=list.split(sep=',')
             except:
-                st.write('Please check the input')
+                st.warning('Please check the input')
         for bundle_id in list_bundleid:
             try:
                 url = "https://play.google.com/store/apps/details?id=" + bundle_id.strip()
@@ -56,7 +56,7 @@ def appstore_data(input):
                 list=re.sub("[{}\]\[']", "", input.strip())
                 list_bundleid=list.split(sep=',')
             except:
-                st.write('Please check the input')
+                st.warning('Please check the input')
         for bundle_id in list_bundleid:
             try:
                  url = "https://apps.apple.com/it/app/apple-store/id" + str(bundle_id).strip()
@@ -117,6 +117,8 @@ with col6:
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
 choice = st.sidebar.radio("Choose the store",('PlayStore','AppStore'), horizontal=True)
     
+	
+
 app_data = []
 
 if (choice=="PlayStore"):
@@ -125,7 +127,10 @@ if (choice=="PlayStore"):
 elif (choice=="AppStore"):
     list_bundleid = st.sidebar.text_area('Put bundleid list', "Example: ['1331794412']")
     appstore_data(list_bundleid)
-        
+	
+ with st.expander("Allowed formats"):
+    st.sidebar.write("""Write something here. """)
+
 if len(app_data) >0:
     df = pd.DataFrame(app_data)
     download(df)
