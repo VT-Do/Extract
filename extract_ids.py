@@ -109,24 +109,15 @@ with col3:
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
 choice = st.sidebar.radio("Choose the store",('PlayStore','AppStore'), horizontal=True)
     
-
-
-
-
 app_data = []
 
-        
-
 if (choice=="PlayStore"):
-    list_bundleid = st.sidebar.text_area('Insert BundleIDs list here', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
+    list_bundleid = st.sidebar.text_area('Insert BundleIDs list', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
     playstore_data(list_bundleid)
 elif (choice=="AppStore"):
-    list_bundleid = st.sidebar.text_area('Put bundleid list here', "Example: ['1331794412']")
+    list_bundleid = st.sidebar.text_area('Put bundleid list', "Example: ['1331794412']")
     appstore_data(list_bundleid)
         
-       
-	
-
 if len(app_data) >0:
     df = pd.DataFrame(app_data)
     download(df)
