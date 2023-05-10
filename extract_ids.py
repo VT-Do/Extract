@@ -95,7 +95,7 @@ def download(output):
             option = st.selectbox("Type",("CSV", "XLSX"))
             csv = output.to_csv(index=False).encode('utf-8')
             container.download_button(
-    		label="Download as"+ option+ " ⬇️",
+    		label="Download as "+ option+ " ⬇️",
     		data=csv,
     		file_name='data.csv',
     		mime='text/csv',
