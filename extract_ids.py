@@ -21,8 +21,10 @@ def playstore_data(input):
             if '\n' in list:
                 list=re.sub("[,]", "", list)
                 list_bundleid=list.split(sep='\n')
+                list_bundleid = [x for x in list_bundleid if x != '']
             else:
                 list_bundleid=list.split(sep=',')
+                list_bundleid = [x for x in list_bundleid if x != '']
         except:
             st.warning('Please check the input')
         for bundle_id in list_bundleid:
