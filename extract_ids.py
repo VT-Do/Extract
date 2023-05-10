@@ -93,11 +93,20 @@ def download(output):
         with col2:
             container=st.container()
             option = st.selectbox("Type",("CSV", "XLSX"))
-            csv = output.to_csv(index=False).encode('utf-8')
-            container.download_button(
+            if option =="CSV":
+                csv = output.to_csv(index=False).encode('utf-8')
+                container.download_button(
     		label="Download as "+ option+ " ⬇️",
     		data=csv,
-    		file_name='data.csv',
+    		file_name='output.csv',
+    		mime='text/csv',
+		)
+            elif option =="XLSX":
+                excel = output.to_excel("output.xlsx").encode('utf-8')
+                container.download_button(
+    		label="Download as "+ option+ " ⬇️",
+    		data=excel,
+    		file_name='output.csv',
     		mime='text/csv',
 		)
         with col3:
