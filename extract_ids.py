@@ -6,12 +6,12 @@ import re
 from bs4 import BeautifulSoup
 import json
 import pandas as pd
-import ast
+#import ast
 import re
 from io import StringIO, BytesIO
-import openpyxl
-import xlsxwriter
-from pyxlsb import open_workbook as open_xlsb
+#import openpyxl
+#import xlsxwriter
+#from pyxlsb import open_workbook as open_xlsb
 
 
 st.set_page_config(layout="wide")
@@ -81,18 +81,6 @@ def appstore_data(input):
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
     return app_data
 
-
-def to_excel(df):
-    output = BytesIO()
-    writer = pd.ExcelWriter(output, engine='xlsxwriter')
-    df.to_excel(writer, index=False, sheet_name='Sheet1')
-    workbook = writer.book
-    worksheet = writer.sheets['Sheet1']
-    format1 = workbook.add_format({'num_format': '0.00'}) 
-    worksheet.set_column('A:A', None, format1)  
-    writer.save()
-    processed_data = output.getvalue()
-    return processed_data
 
 #download
 def download(output):
