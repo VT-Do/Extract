@@ -42,7 +42,7 @@ def playstore_data(input):
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
     return app_data
 	
-def app_data(input):
+def appstore_data(input):
     if (input!="Example: [1331794412]"):
         try:
             list_bundleid=ast.literal_eval(input)
