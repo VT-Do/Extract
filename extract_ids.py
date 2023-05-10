@@ -110,7 +110,8 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-              #  excel = download_excel(output)
+                writer = pd.ExcelWriter(output, engine='xlsxwriter')
+                df.to_excel(writer, sheet_name='Sheet1', index=False)
                 excel = output.getvalue()
                 container.download_button(label="Download as "+ option+ " ⬇️", data=excel, 
 				   file_name='output.xlsx', mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
