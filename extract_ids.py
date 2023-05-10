@@ -11,9 +11,10 @@ import ast
 
 st.set_page_config(layout="wide")
 #st.sidebar.write('Hello')
-app_data = []
+
 
 def playstore_data(input):
+    app_data = []
     if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
         try:
             list_bundleid=ast.literal_eval(input)
@@ -40,6 +41,7 @@ def playstore_data(input):
                      app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})
     else:
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
+	
     return app_data
 	
 def appstore_data(input):
@@ -69,7 +71,7 @@ def appstore_data(input):
                     app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
     else:
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
-    return app_data
+    return pd.DataFrame(app_data)
 
 #download
 def download(output):
@@ -100,7 +102,10 @@ choice = st.sidebar.radio("Choose the store",('PlayStore','AppStore'), horizonta
 
 if (choice=="PlayStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
-    playstore_data(list_bundleid)
+    df=playstore_data(list_bundleid).copy()
+    if not df.empty:
+        download(df)
+	
 elif (choice=="AppStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['1331794412','1331794412']")
     appstore_data(list_bundleid)
@@ -108,9 +113,7 @@ elif (choice=="AppStore"):
        
 	
 
-if len(app_data) >0:
-    df = pd.DataFrame(app_data)
-    download(df)
+
 
 
 
