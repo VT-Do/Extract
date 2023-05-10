@@ -14,7 +14,7 @@ st.set_page_config(layout="wide")
 def playstore_data(input):
     if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
         try:
-            list_bundleid=ast.literal_eval(input).strip()
+            list_bundleid=ast.literal_eval(input.strip())
         except:
             st.write('Please check the input')
         for bundle_id in list_bundleid:
@@ -44,7 +44,7 @@ def playstore_data(input):
 def appstore_data(input):
     if (input!="Example: ['1331794412']"):
         try:
-            list_bundleid=ast.literal_eval(input).strip()
+            list_bundleid=ast.literal_eval(input.strip())
         except:
             st.write('Please check the input')
         for bundle_id in list_bundleid:
