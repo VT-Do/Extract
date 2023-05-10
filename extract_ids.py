@@ -42,7 +42,7 @@ def playstore_data(input):
 	
 
 def appstore_data(input):
-    if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
+    if (input!="Example: ['1331794412']"):
         try:
             list_bundleid=ast.literal_eval(input)
         except:
