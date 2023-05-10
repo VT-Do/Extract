@@ -12,7 +12,7 @@ import ast
 st.set_page_config(layout="wide")
 #st.sidebar.write('Hello')
 def get_data(input):
-    if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']") and (input!="Example: [1,2]"):
+    if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']") and (input!="Example: [1331794412]"):
         try:
             list_bundleid=ast.literal_eval(input)
         except:
@@ -79,7 +79,7 @@ if (choice=="PlayStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
     get_data(list_bundleid)
 elif (choice=="AppStore"):
-    list_bundleid = st.sidebar.text_area('Insert BundleID list here', 'Example: [1,2]')
+    list_bundleid = st.sidebar.text_area('Insert BundleID list here', 'Example: [1331794412]')
     get_data(list_bundleid)
         
        
