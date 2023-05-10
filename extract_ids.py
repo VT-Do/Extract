@@ -130,7 +130,7 @@ if (choice=="PlayStore"):
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
     df=pd.DataFrame(app_data)
     if len(app_data)>0:
-        dowload(df)
+        download(df)
 
 elif (choice=="AppStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['1331794412','1331794412']")
