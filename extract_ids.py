@@ -6,12 +6,9 @@ import re
 from bs4 import BeautifulSoup
 import json
 import pandas as pd
-#import ast
 import re
-from io import StringIO, BytesIO
-#import openpyxl
-#import xlsxwriter
-#from pyxlsb import open_workbook as open_xlsb
+from io import StringIO
+
 
 
 st.set_page_config(layout="wide")
