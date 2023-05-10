@@ -83,7 +83,7 @@ def appstore_data(input):
 # download excel
 def download_excel(df):
     output = BytesIO()
-    writer = pd.ExcelWriter(output, engine='openpyxl')
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
     df.to_excel(writer, index=False, sheet_name='Sheet1')
     writer.save()
     output.seek(0)
