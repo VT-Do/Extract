@@ -129,10 +129,10 @@ elif (choice=="AppStore"):
     appstore_data(list_bundleid)
 	
 with st.sidebar.expander("Allowed formats"):
-    st.write("""[id1,id2,id3]""")
-    st.write("""['id1','id3','id3']""")
-    st.write("""id1,id2,id3""")
-    st.write("""'id1','id2','id3'""")
+    st.write("""[BundleID1,BundleID2,BundleID3]""")
+    st.write("""['BundleID1','BundleID2','BundleID3']""")
+    st.write("""BundleID1,BundleID2,BundleID3""")
+    st.write("""'BundleID1','BundleID2','BundleID3'""")
 
 	
 
