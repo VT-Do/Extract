@@ -11,6 +11,8 @@ import ast
 
 st.set_page_config(layout="wide")
 #st.sidebar.write('Hello')
+app_data = []
+
 def playstore_data(input):
     if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
         try:
@@ -94,14 +96,7 @@ with col3:
 
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
 choice = st.sidebar.radio("Choose the store",('PlayStore','AppStore'), horizontal=True)
-    
-
-
-
-
-app_data = []
-
-        
+          
 
 if (choice=="PlayStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
