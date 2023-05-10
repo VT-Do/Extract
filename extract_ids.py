@@ -8,7 +8,7 @@ import json
 import pandas as pd
 import ast
 import re
-import io 
+from io import StringIO, BytesIO
 import openpyxl
 import xlsxwriter
 
