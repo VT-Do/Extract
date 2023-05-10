@@ -42,7 +42,7 @@ def playstore_data(input):
     else:
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
 	
-    return pd.DataFrame(app_data)
+    return app_data
 	
 def appstore_data(input):
     if (input!="Example: ['1331794412','1331794412']"):
@@ -99,46 +99,18 @@ with col3:
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
 choice = st.sidebar.radio("Choose the store",('PlayStore','AppStore'), horizontal=True)
           
-app_data = []
+
 if (choice=="PlayStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
-    if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
-        try:
-            list_bundleid=ast.literal_eval(input)
-        except:
-            st.write('Please check the input')
-        for bundle_id in list_bundleid:
-             try:
-                 url = "https://apps.apple.com/it/app/apple-store/id" + str(bundle_id)
-                 response = requests.get(url)
-                 soup = BeautifulSoup(response.text, "html.parser")
-                 title_element = soup.find("h1",{"class": "product-header__title"})
-                 app_title = title_element.text.strip().rstrip("\n").split("\n")[0].strip()
-                 app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
-             except:
-                 try:
-                     url = "https://apptopia.com/ios/app/" + str(bundle_id) + "/about"
-                     response = requests.get(url)
-                     soup = BeautifulSoup(response.text, "html.parser")
-                     json_element = soup.find("script", type="application/ld+json")
-                     json_data = json.loads(json_element.string)
-                     app_title = json_data['name']
-                     app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
-                 except:
-                     app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})
-    else:
-        st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
-    df=pd.DataFrame(app_data)
-    if len(app_data)>0:
-        download(df)
-
+    df=playstore_data(list_bundleid).copy()
+    download(df)
+	
 elif (choice=="AppStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['1331794412','1331794412']")
     appstore_data(list_bundleid)
         
        
 	
-
 
 
 
