@@ -113,10 +113,10 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-                excel=df_xlsx = to_excel(output)
+                excel = to_excel(output)
                 st.download_button(
     label="Download Excel workbook",
-    data=output,
+    data=excel,
     file_name="workbook.xlsx",
     mime="application/vnd.ms-excel"
 )
