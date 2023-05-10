@@ -11,7 +11,7 @@ import re
 from io import StringIO
 
 st.set_page_config(layout="wide")
-container=st.container()
+
 
 def playstore_data(input):
     if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
@@ -91,6 +91,7 @@ def download(output):
             pd.set_option('display.max_colwidth', None)
             st.dataframe(output.reset_index(drop=True))
         with col2:
+            container=st.container()
             option = st.selectbox("Type",("CSV", "XLSX"))
             csv = output.to_csv(index=False).encode('utf-8')
             container.download_button(
