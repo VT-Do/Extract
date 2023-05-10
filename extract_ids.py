@@ -22,7 +22,7 @@ def playstore_data(input):
             list_bundleid=ast.literal_eval(input.strip())
         except:
             try:
-                list=re.sub("[{}\]\[']", "", input.strip())
+                list=re.sub("[{}\]\['\"]", "", input.strip())
                 list_bundleid=list.split(sep=',')
             except:
                 st.warning('Please check the input')
@@ -56,7 +56,7 @@ def appstore_data(input):
             list_bundleid=ast.literal_eval(input.strip())
         except:
             try:
-                list=re.sub("[{}\]\[']", "", input.strip())
+                list=re.sub("[{}\]\['\"]", "", input.strip())
                 list_bundleid=list.split(sep=',')
             except:
                 st.warning('Please check the input')
