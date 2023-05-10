@@ -8,8 +8,9 @@ import json
 import pandas as pd
 import ast
 import re
-from io import StringIO
+from io import StringIO, BytesIO
 import xlsxwriter
+
 
 
 st.set_page_config(layout="wide")
@@ -81,8 +82,15 @@ def appstore_data(input):
     else:
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
     return app_data
-	
 
+# download excel
+def download_excel(df):
+    output = BytesIO()
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    df.to_excel(writer, index=False, sheet_name='Sheet1')
+    writer.save()
+    output.seek(0)
+    return output
 	
 	
 #download
@@ -104,13 +112,17 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-                excel = output.to_excel("output.xlsx")
-                container.download_button(
-    		label="Download as "+ option+ " ⬇️",
-    		data=excel,
-    		file_name="output.xlsx",
-                mime="application/vnd.ms-excel"
-		)
+                excel = download_excel(output)
+                container.download_button(label="Download as "+ option+ " ⬇️", data=excel, 
+				   file_name='output.xlsx', mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+
+# Write files to in-memory strings using BytesIO
+# See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
+workbook = xlsxwriter.Workbook(output, {'in_memory': True})
+worksheet = workbook.add_worksheet()
+
+worksheet.write('A1', 'Hello')
+workbook.close()
         with col3:
             st.write('')
     else:
