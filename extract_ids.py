@@ -91,7 +91,7 @@ def download(output):
             st.dataframe(output.reset_index(drop=True))
         with col2:
             csv = output.to_csv(index=False).encode('utf-8')
-        st.download_button(
+            st.download_button(
     		label="Download as CSV ⬇️",
     		data=csv,
     		file_name='data.csv',
