@@ -89,6 +89,9 @@ def create_download_link(df, dfname):
     #linko= f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="myfilename.xlsx">Download excel file</a>'
     linko= f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download=' + fn + '>' + fn + '</a>'
     return(linko)
+
+st.markdown(create_download_link(df, "df"), unsafe_allow_html=True)
+st.markdown(create_download_link(df2, "df2"), unsafe_allow_html=True)
 	
 #download
 def download(output):
