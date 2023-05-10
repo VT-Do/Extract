@@ -21,10 +21,10 @@ def playstore_data(input):
             if '\n' in list:
                 list=re.sub("[,]", "", list)
                 list_bundleid=list.split(sep='\n')
-                list_bundleid = [x for x in list_bundleid if (x.strip() != '') or (x.strip() != '\t')  ]
+                list_bundleid = [x for x in list_bundleid if  not x.isspace() ]
             else:
                 list_bundleid=list.split(sep=',')
-                list_bundleid = [x for x in list_bundleid if (x.strip() != '') or (x.strip() != '\t')]
+                list_bundleid = [x for x in list_bundleid if not x.isspace()]
         except:
             st.warning('Please check the input')
         for bundle_id in list_bundleid:
