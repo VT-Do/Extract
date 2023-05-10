@@ -107,7 +107,7 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-		excel = download_excel(output)
+                excel = download_excel(output)
                 container.download_button(label="Download as "+ option+ " ⬇️", data=excel, 
 				   file_name='output.xlsx', mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
