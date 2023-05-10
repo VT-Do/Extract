@@ -105,6 +105,7 @@ def download(output):
                         data=template_byte,
                         file_name="template.xlsx",
                         mime='application/octet-stream')
+        with col3:
             st.write('')
     else:
         st.write('')
