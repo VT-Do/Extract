@@ -81,14 +81,6 @@ def appstore_data(input):
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
     return app_data
 
-def download_excel(output):
-    output = BytesIO()
-    writer = pd.ExcelWriter(output, engine='xlsxwriter')
-    df.to_excel(writer, sheet_name='Sheet1', index=False)
-    writer.save()
-    output.seek(0)
-    excel_data = output.getvalue()
-    return excel_data
 
 def to_excel(df):
     output = BytesIO()
