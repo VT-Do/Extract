@@ -80,16 +80,14 @@ def appstore_data(input):
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
     return app_data
 
-def create_download_link(df, dfname):
-    towrite = io.BytesIO()
-    downloaded_file = df.to_excel(towrite, encoding='utf-8', index=False, header=True) # write to BytesIO buffer
-    towrite.seek(0)  # reset pointer
-    b64 = base64.b64encode(towrite.read()).decode() 
-    fn = dfname + '.xlsx'
-    #linko= f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="myfilename.xlsx">Download excel file</a>'
-    linko= f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download=' + fn + '>' + fn + '</a>'
-    return(linko)
-	
+def download_excel(output):
+    output = BytesIO()
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    df.to_excel(writer, sheet_name='Sheet1', index=False)
+    writer.save()
+    output.seek(0)
+    excel_data = output.getvalue()
+    return excel_data
 #download
 def download(output):
     if output.shape[0]>0:
@@ -109,7 +107,13 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-                container.markdown(create_download_link(output, "output"), unsafe_allow_html=True)
+                excel=download_excel(output)
+                st.download_button(
+    label="Download Excel workbook",
+    data=output,
+    file_name="workbook.xlsx",
+    mime="application/vnd.ms-excel"
+)
             st.write('')
     else:
         st.write('')
