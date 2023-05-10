@@ -107,8 +107,8 @@ def download(output):
                 container.download_button(
     		label="Download as "+ option+ " ⬇️",
     		data=excel,
-    		file_name='output.csv',
-    		mime='text/csv',
+    		file_name="output.xlsx",
+                mime="application/vnd.ms-excel"
 		)
         with col3:
             st.write('')
