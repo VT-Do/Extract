@@ -100,20 +100,17 @@ def download(output):
             st.write('')
 		
         pd.set_option('display.max_colwidth', None)
-	with col11:
-            option = st.selectbox("Please choose type of contact",("Report an error", "Ask questions", "Comment"))
-            text_input = st.text_input(label='Your name or email')
         st.dataframe(output.reset_index(drop=True))
     else:
         st.write('')
         st.write('No output found')
    
-col1, col2, col3 = st.columns((4, 7, 3))
-with col1:
+col4, col5, col6 = st.columns((4, 7, 3))
+with col4:
     st.write('')
-with col2:
+with col5:
     st.title("Extracted Bundle IDs") 
-with col3:
+with col6:
     st.write('')
 
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
