@@ -85,7 +85,7 @@ def appstore_data(input):
 #download
 def download(output):
     if output.shape[0]>0:
-        col1, col2,col3= st.columns(2,2,7)
+        col1, col2,col3= st.columns((2,2,7))
         with col1:
             csv = output.to_csv(index=False).encode('utf-8')
         st.download_button(
