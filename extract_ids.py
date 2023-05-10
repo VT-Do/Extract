@@ -83,7 +83,7 @@ def download(output):
     		file_name='data.csv',
     		mime='text/csv',
 		)
-	pd.set_option('display.max_colwidth', None)
+        pd.set_option('display.max_colwidth', None)
         st.dataframe(output.reset_index(drop=True))
     else:
         st.write('')
