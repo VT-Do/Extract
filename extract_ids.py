@@ -89,6 +89,16 @@ def download(output):
         col1, col2, col3= st.columns((7,2,2))
         with col1:	
             pd.set_option('display.max_colwidth', None)
+            st.markdown(
+    f"""
+    <style>
+    th {{
+        text-align: center;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
             st.dataframe(output.reset_index(drop=True))
         with col2:
             container=st.container()
