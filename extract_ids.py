@@ -91,7 +91,7 @@ def download(output):
             pd.set_option('display.max_colwidth', None)
             st.markdown(
     """<style>
-        .dataframe {text-align: left !important}
+        .dataframe {text-align: center !important}
     </style>
     """, unsafe_allow_html=True) 
             st.dataframe(output.reset_index(drop=True))
