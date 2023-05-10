@@ -58,7 +58,7 @@ def appstore_data(input):
                 list_bundleid=list.split(sep='\n')
             else:
                 list_bundleid=list.split(sep=',')
-            except:
+        except:
                 st.warning('Please check the input')
         for bundle_id in list_bundleid:
             try:
