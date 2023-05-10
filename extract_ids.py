@@ -47,7 +47,7 @@ def appstore_data(input):
         try:
             list_bundleid=ast.literal_eval(input.strip())
         except:
-	    try:
+            try:
 	        list=re.sub("[{}\]\[']", "", input.strip())
 		list_bundleid=list.split(sep=',')
 	    except:
