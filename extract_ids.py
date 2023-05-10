@@ -48,8 +48,8 @@ def appstore_data(input):
             list_bundleid=ast.literal_eval(input.strip())
         except:
             try:
-	        list=re.sub("[{}\]\[']", "", input.strip())
-		list_bundleid=list.split(sep=',')
+                list=re.sub("[{}\]\[']", "", input.strip())
+                list_bundleid=list.split(sep=',')
 	    except:
                 st.write('Please check the input')
         for bundle_id in list_bundleid:
