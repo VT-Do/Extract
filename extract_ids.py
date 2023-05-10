@@ -52,10 +52,11 @@ def playstore_data(input):
 def appstore_data(input):
     if (input!="Example: ['1331794412']"):
         try:
-            list_bundleid=ast.literal_eval(input.strip())
-        except:
-            try:
-                list=re.sub("[{}\]\['\"]", "", input.strip())
+            list=re.sub("[{}\]\['\"]", "", input.strip())
+            if '\n' in list:
+                list=re.sub("[,]", "", list)
+                list_bundleid=list.split(sep='\n')
+            else:
                 list_bundleid=list.split(sep=',')
             except:
                 st.warning('Please check the input')
