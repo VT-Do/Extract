@@ -8,7 +8,7 @@ import json
 import pandas as pd
 import ast
 import re
-from io import StringIO, BytesIO
+from io 
 import openpyxl
 import xlsxwriter
 
@@ -81,7 +81,7 @@ def appstore_data(input):
     return app_data
 
 def create_download_link(df, dfname):
-    towrite = BytesIO()
+    towrite = io.BytesIO()
     downloaded_file = df.to_excel(towrite, encoding='utf-8', index=False, header=True) # write to BytesIO buffer
     towrite.seek(0)  # reset pointer
     b64 = base64.b64encode(towrite.read()).decode() 
