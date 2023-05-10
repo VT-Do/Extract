@@ -103,7 +103,7 @@ choice = st.sidebar.radio("Choose the store",('PlayStore','AppStore'), horizonta
 if (choice=="PlayStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleID list here', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
     df=playstore_data(list_bundleid).copy()
-    if not df.empty:
+    if (not df.empty):
         download(df)
 	
 elif (choice=="AppStore"):
