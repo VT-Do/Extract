@@ -98,7 +98,7 @@ def download(output):
     		mime='text/csv',
 		)
             elif option =="XLSX":
-                output=output.reset_index(drop=True).to_excel("output.xlsx")
+                output=output.to_excel("output.xlsx",index=False)
                 with open("output.xlsx", "rb") as template_file:
                     template_byte = template_file.read()
                 container.download_button(label="Download as "+ option+ " ⬇️",
