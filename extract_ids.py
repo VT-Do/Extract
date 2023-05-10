@@ -81,14 +81,15 @@ def appstore_data(input):
     return app_data
 
 # download excel
-def download_excel(df):
-    output = BytesIO()
-    writer = pd.ExcelWriter(output, engine='openpyxl')
-    df.to_excel(writer, index=False, sheet_name='Sheet1')
+def download_excel(output):
+    # Set up Excel writer using in-memory BytesIO object
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    df.to_excel(writer, sheet_name='Sheet1', index=False)
+
+    # Save workbook and return BytesIO object
     writer.save()
-    writer.close()  # add this line to close the writer object
-    output.seek(0)
-    return output
+    excel_data = output.getvalue()
+    return excel_data
 	
 #download
 def download(output):
