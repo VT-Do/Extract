@@ -65,7 +65,7 @@ with col3:
     st.write('')
 
 st.markdown("""<hr style="height:1px;border:none;color:#333;background-color:#95e8a4;" /> """, unsafe_allow_html=True)
-choice = st.sidebar.radio("Select the store",('PlayStore','AppStore'), horizontal=True)
+choice = st.sidebar.radio("Choose the store",('PlayStore','AppStore'), horizontal=True)
     
 
 
