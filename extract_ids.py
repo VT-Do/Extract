@@ -85,7 +85,7 @@ def appstore_data(input):
 #download
 def download(output):
     if output.shape[0]>0:
-        col1, col2,col3= st.columns((2,2,7))
+        col1, col2= st.columns((5,5))
         with col1:
             csv = output.to_csv(index=False).encode('utf-8')
         st.download_button(
@@ -94,11 +94,8 @@ def download(output):
     		file_name='data.csv',
     		mime='text/csv',
 		)
-        with col2:
              option = st.selectbox("Type",("CSV", "XLSX"))
-        with col3:
-            st.write('')
-		
+        with col2:	
         pd.set_option('display.max_colwidth', None)
         st.dataframe(output.reset_index(drop=True))
     else:
