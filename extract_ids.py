@@ -57,7 +57,7 @@ def appstore_data(input):
                  app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
             except:
                 try:
-                    url = "https://apptopia.com/google-play/app/" + bundle_id + "/about"
+                    url = "https://apptopia.com/ios/app/" + str(bundle_id) + "/about"
                     response = requests.get(url)
                     soup = BeautifulSoup(response.text, "html.parser")
                     json_element = soup.find("script", type="application/ld+json")
@@ -65,7 +65,7 @@ def appstore_data(input):
                     app_title = json_data['name']
                     app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
                 except:
-                    app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
+                    app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})
     else:
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
     return app_data
