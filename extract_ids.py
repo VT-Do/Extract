@@ -49,12 +49,12 @@ def appstore_data(input):
             st.write('Please check the input')
         for bundle_id in list_bundleid:
             try:
-                url = "https://play.google.com/store/apps/details?id=" + bundle_id
-                response = requests.get(url)
-                soup = BeautifulSoup(response.text, "html.parser")
-                title_element = soup.find("h1",class_=re.compile("Fd93Bb"))
-                app_title = title_element.text.strip()
-                app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+                 url = "https://apps.apple.com/it/app/apple-store/id" + str(bundle_id)
+                 response = requests.get(url)
+                 soup = BeautifulSoup(response.text, "html.parser")
+                 title_element = soup.find("h1",{"class": "product-header__title"})
+                 app_title = title_element.text.strip().rstrip("\n").split("\n")[0].strip()
+                 app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
             except:
                 try:
                     url = "https://apptopia.com/google-play/app/" + bundle_id + "/about"
