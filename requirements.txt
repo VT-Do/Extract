@@ -1,4 +1,1 @@
 beautifulsoup4
-xlsxwriter
-openpyxl
-pyxlsb
