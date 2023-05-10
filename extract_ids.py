@@ -128,8 +128,8 @@ elif (choice=="AppStore"):
     list_bundleid = st.sidebar.text_area('Put bundleid list', "Example: ['1331794412']")
     appstore_data(list_bundleid)
 	
-with st.expander("Allowed formats"):
-    st.sidebar.write("""Write something here. """)
+with st.sidebar.expander("Allowed formats"):
+    st.write("""Write something here. """)
 
 if len(app_data) >0:
     df = pd.DataFrame(app_data)
