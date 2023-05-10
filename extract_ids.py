@@ -129,7 +129,12 @@ elif (choice=="AppStore"):
     appstore_data(list_bundleid)
 	
 with st.sidebar.expander("Allowed formats"):
-    st.write("""Write something here. """)
+    st.write("""[id1,id2,id3]""")
+    st.write("""['id1','id3','id3']""")
+    st.write("""id1,id2,id3""")
+    st.write("""'id1','id2','id3'""")
+
+	
 
 if len(app_data) >0:
     df = pd.DataFrame(app_data)
