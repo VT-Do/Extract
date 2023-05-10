@@ -19,6 +19,7 @@ def playstore_data(input):
         try:
             list=re.sub("[{}\]\['\"]", "", input.strip())
             if '\n' in list:
+                list=re.sub("[\']", "", list)
                 list_bundleid=list.split(sep='\n')
             else:
                 list_bundleid=list.split(sep=',')
