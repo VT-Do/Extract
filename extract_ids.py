@@ -116,13 +116,6 @@ def download(output):
                 container.download_button(label="Download as "+ option+ " ⬇️", data=excel, 
 				   file_name='output.xlsx', mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
 
-# Write files to in-memory strings using BytesIO
-# See: https://xlsxwriter.readthedocs.io/workbook.html?highlight=BytesIO#constructor
-workbook = xlsxwriter.Workbook(output, {'in_memory': True})
-worksheet = workbook.add_worksheet()
-
-worksheet.write('A1', 'Hello')
-workbook.close()
         with col3:
             st.write('')
     else:
