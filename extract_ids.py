@@ -7,7 +7,8 @@ from bs4 import BeautifulSoup
 import json
 import pandas as pd
 import ast
-
+import re
+from io import StringIO
 
 st.set_page_config(layout="wide")
 #st.sidebar.write('Hello')
@@ -46,7 +47,11 @@ def appstore_data(input):
         try:
             list_bundleid=ast.literal_eval(input.strip())
         except:
-            st.write('Please check the input')
+	    try:
+	        list=re.sub("[{}\]\[']", "", input.strip())
+		list_bundleid=list.split(sep=',')
+	    except:
+                st.write('Please check the input')
         for bundle_id in list_bundleid:
             try:
                  url = "https://apps.apple.com/it/app/apple-store/id" + str(bundle_id)
