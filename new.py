@@ -19,10 +19,9 @@ def fetch_data(urls):
                 json_element = soup.find("script", type="application/ld+json")
                 json_data = json.loads(json_element.string)
                 app_title = json_data['name']
-                app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+                return {'Bundle ID': bundle_id, 'App Title': app_title}
             except:
-                app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})
-        return app_data
+                return {'Bundle ID': bundle_id, 'App Title': '-'}
     bag = db.from_sequence(urls)
     return bag.map(fetch).compute()
 
