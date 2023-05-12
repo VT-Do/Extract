@@ -15,6 +15,7 @@ st.set_page_config(layout="wide")
 if 'download_option' not in state:
     state.option = 'CSV'
 
+@st.cache(max_entries=1)
 def playstore_data(input):
     if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
         try:
@@ -51,7 +52,7 @@ def playstore_data(input):
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
     return app_data
 	
-
+@st.cache(max_entries=1)
 def appstore_data(input):
     if (input!="Example: ['1331794412']"):
         try:
