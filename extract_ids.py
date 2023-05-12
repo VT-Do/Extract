@@ -89,39 +89,7 @@ def appstore_data(input):
     return app_data
 
 
-#download
-def download(output):
-    if output.shape[0]>0:
-        col1, col2, col3= st.columns((7,2,2))
-        with col1:	
-            pd.set_option('display.max_colwidth', None)
-            st.dataframe(output.reset_index(drop=True))
-        with col2:
-            container=st.container()
-            option = st.selectbox("Type",("CSV", "XLSX"))
-            if option =="CSV":
-                csv = output.to_csv(index=False).encode('utf-8')
-                container.download_button(
-    		label="Download as "+ option+ " ⬇️",
-    		data=csv,
-    		file_name='output.csv',
-    		mime='text/csv',
-		)
-            elif option =="XLSX":
-                output=output.to_excel("output.xlsx",index=False)
-                with open("output.xlsx", "rb") as template_file:
-                    template_byte = template_file.read()
-                container.download_button(label="Download as "+ option+ " ⬇️",
-                        data=template_byte,
-                        file_name="template.xlsx",
-                        mime='application/octet-stream')
-        with col3:
-            st.write('')
-    else:
-        st.write('')
-        st.write('No output found')
-	# Store the value of the download option in SessionState
-        state.option = option
+
    
 col4, col5, col6 = st.columns((4, 7, 3))
 with col4:
@@ -158,5 +126,36 @@ with st.sidebar.expander("Allowed formats"):
 
 if len(app_data) >0:
     df = pd.DataFrame(app_data)
-    download(df)
+    #download
+    if output.shape[0]>0:
+        col1, col2, col3= st.columns((7,2,2))
+        with col1:	
+            pd.set_option('display.max_colwidth', None)
+            st.dataframe(output.reset_index(drop=True))
+        with col2:
+            container=st.container()
+            option = st.selectbox("Type",("CSV", "XLSX"))
+            if option =="CSV":
+                csv = output.to_csv(index=False).encode('utf-8')
+                container.download_button(
+    		label="Download as "+ option+ " ⬇️",
+    		data=csv,
+    		file_name='output.csv',
+    		mime='text/csv',
+		)
+            elif option =="XLSX":
+                output=output.to_excel("output.xlsx",index=False)
+                with open("output.xlsx", "rb") as template_file:
+                    template_byte = template_file.read()
+                container.download_button(label="Download as "+ option+ " ⬇️",
+                        data=template_byte,
+                        file_name="template.xlsx",
+                        mime='application/octet-stream')
+        with col3:
+            st.write('')
+    else:
+        st.write('')
+        st.write('No output found')
+	# Store the value of the download option in SessionState
+    state.option = option
 
