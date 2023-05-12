@@ -22,7 +22,7 @@ def fetch_data(urls):
                 app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
             except:
                 app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})
-		
+	return app_data
     bag = db.from_sequence(urls)
     return bag.map(fetch).compute()
 
