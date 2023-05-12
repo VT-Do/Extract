@@ -125,7 +125,7 @@ with st.sidebar.expander("Allowed formats"):
 	
 
 if len(app_data) >0:
-    df = pd.DataFrame(app_data)
+    output = pd.DataFrame(app_data)
     #download
     if output.shape[0]>0:
         col1, col2, col3= st.columns((7,2,2))
