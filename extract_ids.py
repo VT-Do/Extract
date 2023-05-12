@@ -120,6 +120,8 @@ def download(output):
     else:
         st.write('')
         st.write('No output found')
+	# Store the value of the download option in SessionState
+        state.option = option
    
 col4, col5, col6 = st.columns((4, 7, 3))
 with col4:
@@ -157,5 +159,4 @@ with st.sidebar.expander("Allowed formats"):
 if len(app_data) >0:
     df = pd.DataFrame(app_data)
     download(df)
-# Store the value of the download option in SessionState
-state.option = option
+
