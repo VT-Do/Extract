@@ -55,7 +55,10 @@ def playstore_data(input):
             
         bag = db.from_sequence(list_bundleid)
         results = bag.map(get_data)
-        output = dask.compute(*results)
+	try:
+            output = dask.compute(*results)
+        except Exception as e:
+    print("Exception raised during computation:", e)
     
     else:
         st.markdown(f'<h1 style="color:#de4b4b;font-size:15px;">{"Please insert input!"}</h1>', unsafe_allow_html=True)
