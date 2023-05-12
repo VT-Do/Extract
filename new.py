@@ -32,10 +32,10 @@ def get_data(bundle_id):
             soup = BeautifulSoup(response.text, "html.parser")
             json_element = soup.find("script", type="application/ld+json")
             json_data = json.loads(json_element.string)
-             app_title = json_data['name']
-             app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+            app_title = json_data['name']
+            app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
          except:
-             app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
+            app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
      return app_data
      
 def playstore_data(input):
