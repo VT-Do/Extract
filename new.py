@@ -34,7 +34,7 @@ def get_data(bundle_id):
             json_data = json.loads(json_element.string)
             app_title = json_data['name']
             app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
-         except:
+        except:
             app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
      return app_data
      
