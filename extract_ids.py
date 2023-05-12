@@ -8,11 +8,12 @@ import json
 import pandas as pd
 import re
 from io import StringIO
-
+from streamlit import session_state as state
 
 
 st.set_page_config(layout="wide")
-
+if 'download_option' not in state:
+    state.option = 'CSV'
 
 def playstore_data(input):
     if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
@@ -156,3 +157,5 @@ with st.sidebar.expander("Allowed formats"):
 if len(app_data) >0:
     df = pd.DataFrame(app_data)
     download(df)
+# Store the value of the download option in SessionState
+state.download_option = download_option
