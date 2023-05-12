@@ -36,7 +36,7 @@ def get_data(bundle_id):
             app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
         except:
             app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})	
-     return app_data
+    return app_data
      
 def playstore_data(input):
     if (input!="Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']"):
