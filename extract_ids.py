@@ -158,4 +158,4 @@ if len(app_data) >0:
     df = pd.DataFrame(app_data)
     download(df)
 # Store the value of the download option in SessionState
-state.download_option = download_option
+state.download_option = option
