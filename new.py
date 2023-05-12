@@ -5,23 +5,23 @@ import requests
 def fetch_data(urls):
     def fetch(url):
         try:
-                 url = "https://apps.apple.com/it/app/apple-store/id" + str(bundle_id).strip()
-                 response = requests.get(url)
-                 soup = BeautifulSoup(response.text, "html.parser")
-                 title_element = soup.find("h1",{"class": "product-header__title"})
-                 app_title = title_element.text.strip().rstrip("\n").split("\n")[0].strip()
-                 app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+            url = "https://apps.apple.com/it/app/apple-store/id" + str(bundle_id).strip()
+            response = requests.get(url)
+            soup = BeautifulSoup(response.text, "html.parser")
+            title_element = soup.find("h1",{"class": "product-header__title"})
+            app_title = title_element.text.strip().rstrip("\n").split("\n")[0].strip()
+            app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
+        except:
+            try:
+                url = "https://apptopia.com/ios/app/" + str(bundle_id).strip() + "/about"
+                response = requests.get(url)
+                soup = BeautifulSoup(response.text, "html.parser")
+                json_element = soup.find("script", type="application/ld+json")
+                json_data = json.loads(json_element.string)
+                app_title = json_data['name']
+                app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
             except:
-                try:
-                    url = "https://apptopia.com/ios/app/" + str(bundle_id).strip() + "/about"
-                    response = requests.get(url)
-                    soup = BeautifulSoup(response.text, "html.parser")
-                    json_element = soup.find("script", type="application/ld+json")
-                    json_data = json.loads(json_element.string)
-                    app_title = json_data['name']
-                    app_data.append({'Bundle ID': bundle_id, 'App Title': app_title})
-                except:
-                    app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})
+                app_data.append({'Bundle ID': bundle_id, 'App Title': '-'})
 		
     bag = db.from_sequence(urls)
     return bag.map(fetch).compute()
