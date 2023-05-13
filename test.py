@@ -1,5 +1,5 @@
 import streamlit as st
-from streamlit import SessionState
+from streamlit import session_state as SessionState
 
 
 session_state = SessionState.get(col1=False, col2=False, col3=False)
