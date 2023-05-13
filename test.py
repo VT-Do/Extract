@@ -1,5 +1,6 @@
 import streamlit as st
-from streamlit import session_state as SessionState
+from src.pages.sessionState import SessionState
+
 
 
 session_state = SessionState.get(col1=False, col2=False, col3=False)
