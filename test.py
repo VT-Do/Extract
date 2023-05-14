@@ -109,7 +109,17 @@ app_data = []
 
 if (choice=="PlayStore"):
     list_bundleid = st.sidebar.text_area('Insert BundleIDs list', "Example: ['air.com.jogatina.ginrummy.android','air.com.jogatina.mahjong']")
-    playstore_data(list_bundleid)
+    if "option" not in state:
+    # Execute the expensive computation
+        expensive_result = playstore_data(list_bundleid)
+    # Cache the result in SessionState
+        state.expensive_result = expensive_result
+    else:
+        # Use the cached result
+        expensive_result = state.expensive_result
+    expensive_result
+
+    
 elif (choice=="AppStore"):
     list_bundleid = st.sidebar.text_area('Put bundleid list', "Example: ['1331794412']")
     appstore_data(list_bundleid)
